@@ -19,7 +19,21 @@ public class WeatherAdminController {
     @Autowired
     private WeatherService weatherService;
 
-    //TODO build API Controller
+   @PostMapping
+    public ResponseEntity<WeatherDTO> addWeather(@RequestBody WeatherDTO weatherDTO){
+       try{
+           weatherService. addWeather(weatherDTO);
+           return new ResponseEntity<>(HttpStatus.CREATED);
+       }catch (CityAndStateAlreadyExistsException e){
+           return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
+       }
+   }
+
+   @GetMapping("/city")
+    public ResponseEntity<?> getWeatherByCity(@PathVariable String city) {
+        Weather weather = weatherService.getWeather(city);
+        return weather != null ? ResponseEntity.ok(weather) : ResponseEntity.notFound().build();
+   }
 
 }
 

@@ -15,7 +15,10 @@ public class WeatherController {
     private WeatherService weatherService;
 
 
-    //TODO build Thymeleaf controller
+    @GetMapping("/")
+    public String showFrom(@RequestParam String city, @RequestParam String state, Model model){
+        return "weatherDisplay";
+    }
 }
 
 

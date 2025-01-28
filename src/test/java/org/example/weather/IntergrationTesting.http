@@ -1,3 +1,16 @@
 ## TODO Write Tests
 
+POST http://localhost:8080/api/weather
+Content-Type: application/json
+
+{
+  "city": "Ottumwa",
+  "state": "IA",
+  "tempC": -2,
+  "precipitation": 0,
+  "hmidity": 0.40,
+  "windKmH": 10
+}
+
+
 
